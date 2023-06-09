@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css"></link>
+    <link rel="icon" href="./Images/LogoEmbed.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <title>Azare</title>
+  </head>
+  <body onload="FetchNewVideo()">
+  <div style="position: relative;">
+    <div id="ErrorBox" style="z-index: 3;visibility:hidden;position: absolute;left:50%;transform: translate(-50%);margin-top: 100px;background-color: rgba(125, 0, 0, 0.5);align-self:center;margin-top:50px;box-shadow: 0 0 0 2px red; border-width: 10px; border-radius: 10px; width:400px; height:75px;display: flex;justify-content: center;align-items: center;">
+      <p id="ErrorText" style="font-family: 'Roboto', sans-serif; color:white;">An error has occurred.</p>
+    </div>
+  </div>
+
+    <!-- SIGNUP WINDOW -->
+
+    <div id="SignUpWrapper" class="popupwrapper" style="z-index: 2;visibility: hidden;">
+      <div id="SignUpContainer" class="popup-container" style="visibility: hidden;">
+        <div id="ExitContainer" style="float: right;">
+          <button id="CloseSignup" class="HoverPointer" style="height:40px; width:40px; border-radius: 90px; border-width:0px; background-color: #424242; margin-top: 5px; margin-right: 5px; display:flex; justify-content: center; align-content: center; align-items: center;"><img draggable="false" src="./Images/X.png" style="width:18px; height:18px;"></button>
+        </div>
+        <form id="signupForm" style="width:100%;height:100%; display: flex; flex-direction: column; align-items: center;">
+          <br>
+          <p style="font-family: 'Roboto', sans-serif; font-size:x-large; margin-top: 5px;">Sign up for Azare</p>
+          <div class="user-box" style="width:100%;display: flex; align-items: center;flex-direction: column;">
+            <label style="font-family: 'Roboto', sans-serif;margin-bottom: 5px;">Username</label>
+            <input style="font-family: 'Roboto', sans-serif;  font-size:medium;" type="text" maxlength = "20" id="NEWuserNameInput" class="InputBox" autocomplete="off" required="">
+          </div>
+          <div class="user-box" style="width:100%;display: flex; align-items: center;flex-direction: column;margin-top:10px;">
+            <label style="font-family: 'Roboto', sans-serif; margin-bottom: 5px;">Password</label>
+            <input style="font-family: 'Roboto', sans-serif; font-size:medium;" type="password" maxlength = "20" id="NEWpassWordInput" class="InputBox" autocomplete="off" required="">
+          </div>
+          <div class="user-box" style="width:100%;display: flex; align-items: center;flex-direction: column;margin-top:10px; margin-bottom: 40px;">
+            <label style="font-family: 'Roboto', sans-serif; margin-bottom: 5px;">Confirm Password</label>
+            <input style="font-family: 'Roboto', sans-serif; font-size:medium;" type="password" maxlength = "20" id="NEWpassWordInput2" class="InputBox" autocomplete="off" required="">
+          </div>
+          <button id="SignUp" style="position: relative;" class="SignInButton">Sign up</button>
+          <div style="display:flex;flex-direction: row; align-items: center;">
+            <p style="font-family: 'Roboto', sans-serif;">Already have an account?</p>
+            <a style="font-family: 'Roboto', sans-serif; text-decoration: none; margin-left: 7px;" href="/home?action=login">Log in</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- LOGIN WINDOW -->
+ 
+    <div id="LogInWrapper" class="popupwrapper" style="z-index: 2;visibility: hidden;">
+      <div id="LogInContainer" class="popup-container" style="visibility: hidden;">
+        <div id="ExitContainer" style="float: right;">
+          <button id="CloseLogin" class="HoverPointer" style="height:40px; width:40px; border-radius: 90px; border-width:0px; background-color: #424242; margin-top: 5px; margin-right: 5px; display:flex; justify-content: center; align-content: center; align-items: center;"><img draggable="false" src="./Images/X.png" style="width:18px; height:18px;"></button>
+        </div>
+        <form id="loginForm" style="width:100%;height:100%; display: flex; flex-direction: column; align-items: center;">
+          <br>
+          <p style="font-family: 'Roboto', sans-serif; font-size:x-large; margin-top: 5px;">Log in to Azare</p>
+          <div class="user-box" style="width:100%;display: flex; align-items: center;flex-direction: column;">
+            <label style="font-family: 'Roboto', sans-serif;margin-bottom: 5px;">Username</label>
+            <input style="font-family: 'Roboto', sans-serif;  font-size:medium;" type="text" id="userNameInput" class="InputBox" autocomplete="off" required="">
+          </div>
+          <div class="user-box" style="width:100%;display: flex; align-items: center;flex-direction: column;margin-top:10px; margin-bottom: 40px;">
+            <label style="font-family: 'Roboto', sans-serif; margin-bottom: 5px;">Password</label>
+            <input style="font-family: 'Roboto', sans-serif; font-size:medium;" type="password" id="passWordInput" class="InputBox" autocomplete="off" required="">
+          </div>
+          <button id="SignIn" style="position: relative;" class="SignInButton">Sign in</button>
+          <div style="display:flex;flex-direction: row; align-items: center;">
+            <p style="font-family: 'Roboto', sans-serif;">Don't have an account?</p>
+            <a style="font-family: 'Roboto', sans-serif; text-decoration: none; margin-left: 7px;" href="/home?action=signup">Sign up</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+
+    <div class="container">
+      <div class="left" style="height:100%;width:20%;">
+        <div class="header"></div>
+        <div class="main"></div>
+      </div>
+      <div class="middle" style="height:100%;width:60%;">
+        <div class="header">
+          <div style="height:100%;;display:flex;align-items: center;"><button onclick="HomePage()" class="HoverPointer" style="height:100%;align-items:center;border-width:0px;background-color: rgba(0,0,0,0);display: flex; flex-direction: row;"><img draggable="false" src="./Images/Logo.png" style="height: 70%;"><p style="margin-left:10px;font-size:large;font-family: 'Roboto', sans-serif;">AZARE</p></button></div>
+          <div id="ActionDiv" style="visibility:hidden;height:100%;display:flex;align-items: center;"><button id="YourProfileButton" onclick="GoToProfile()" class="fadeBgHover" title="Your profile" style="display:none;padding-left:10px;padding-right:10px;height:100%;display: flex; align-items: center; border-width: 0px;"><div style="height:100%;display:flex;align-items: center;margin-right: 10px;"><p id="UsernameDisplay" style="margin:0px;display:none;font-family: 'Roboto', sans-serif;"></p><img id="VerifiedSymbol" src="./Images/VERIFIED.png" draggable="false" style="display:none;height:25%;margin-left: 3px;"></div><img id="ProfileImage" draggable="false" src="./UserUploaded/images/default.png" style="display:none;height:60%;border-radius:180px;border-width: 50px; border-color: #0056a1;"></button><button id="OpenLogInWindow" class="loginButton" style="font-family: 'Roboto', sans-serif; margin-right: 10px;">Sign in</button><button id="OpenSignUpWindow" class="signupButton" style="font-family: 'Roboto', sans-serif;">Sign up</button><button id="burger-menu" style="display: none; background-color: rgba(0,0,0,0); border-width: 0px;"><i class="fa-sharp fa-solid fa-bars"></i></button></div>
+          <div id="pop-up-window" style="border-radius: 5px; background-color: #232323;">
+            <div style="border-width: 0px;display: flex; flex-direction: row;align-items: center;">
+              <button onclick="TerminateSession()" style="background-color: #b00909; height:20%;border-width: 0px;">Sign out</button>
+            </div>
+          </div>
+        </div>
+        <div class="main" style="display: flex; flex-direction: row;">
+          <div style="width:20%;height:100%;background-color: rgb(31, 31, 31);">
+            <!-- NAVIGATION -->
+            <button class="NaviHoverFade" style="margin-top: 5px;border-radius: 10px; border-width: 0px;width:100%;height:4vh;font-family: 'Roboto', sans-serif; font-size:medium;"><i class="fa-solid fa-house fa-sm" style="margin-right: 8px;"></i>For You</button>
+            <button class="NaviHoverFade" style="margin-top: 10px; border-radius: 10px; border-width: 0px;width:100%;height:4vh;font-family: 'Roboto', sans-serif; font-size:medium;"><i class="fa-solid fa-user-group fa-sm" style="margin-right: 8px;"></i>Following</button>
+            <hr style="height:2px;border-width: 0px;background-color: rgb(44, 44, 44);width: 95%;">
+            <!-- LOGIN REMINDER -->
+            <div id="LoginNotification" style="display:none;font-family: 'Roboto', sans-serif;margin-top: 20px; color: #858585; text-align: center; width:95%; flex-direction: column;align-items: center;"><div>Log in to follow creators, like videos, and view comments.</div><div><button class="SignInEmbedded" onclick="OpenLogInWindowEmbed()" style="width:80%; height:4vh;font-family: 'Roboto', sans-serif;font-size: large;border-radius: 5px;border-width: 0px;border: 2.5px solid #0077df; color: #0077df; margin-top: 25px;">Sign in</button></div></div>
+            <hr id="LoginNotificationBorder" style="display:none;margin-top:20px;height:2px;border-width: 0px;background-color: rgb(44, 44, 44);width: 95%;">
+            <!-- SUGGESTED ACCOUNTS -->
+            <div style="width:95%;display: flex; justify-content:flex-start;"><p style="font-family: 'Roboto', sans-serif; margin-left: 10px;color: #858585;">Suggested accounts</p></div>
+            <div id="SuggestedAccountsDiv" style="width:100%;">
+              
+            </div>
+          </div>
+          <div style="width: 80%; height: 100%; display: flex; justify-content: center; align-items: center; border-radius: 10px;">
+            <div style="width: 50%; height: 50%; display: flex; flex-direction: column;">
+              <div style="width: 90%; height: 8%; display: flex; align-items: center; justify-content: space-between;">
+                <button class="HoverPointer" style="display: flex; flex-direction: row; align-items: center; height: 100%; background-color: rgba(0,0,0,0); border-width: 0px;font-family: 'Roboto', sans-serif;" onclick="GoToProfileOfVideoOwner()">
+                  <img id="VideoImageDisplay" src="./UserUploaded/images/default.png" style="border-radius: 100%; height: 80%;">
+                  <p id="VideoUsernameDisplay" style="font-family: 'Roboto', sans-serif; margin-left: 5px;font-size: medium;"></p>
+                  <img id="VideoVerifiedDisplay" src="./Images/VERIFIED.png" style="height: 26%; margin-left: 3px;display:none;">
+                </button>
+                <button style="height: 60%; font-family: 'Roboto', sans-serif; font-size: small; border-radius: 5px; border-width: 0px; border: 2.5px solid #0077df; color: #0077df; background-color: black;"><h1 style="margin:0px;font-size: small;margin-left: 5px; margin-right: 5px;">Follow</h1></button>
+              </div>
+              <p id="captionDisplay" style="margin: 0px; width:90%; font-family: 'Roboto', sans-serif;font-size:medium;color: #cfcfcf;margin-bottom: 10px;"></p>
+              <div class="wrapper" style="display: flex; flex-direction: row; height: 92%; width: 100%; border-radius: 10px;">
+                <div style="height: 100%; width: 50%; position: relative;">
+                  <div style="border-right: 0px;" class="video-container">
+                    <video id="myVideo" style="border-radius: 10px;" src="./UserUploaded/videos/resized_1682496198180.mp4" autoplay muted loop></video>
+                    <div class="controls-container" style="display: flex; justify-content: space-between;">
+                      <button class="play-pause-button"><i class="fa fa-pause"></i></button>
+                      <div class="timeline-container">
+                        <div class="timeline-progress"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="buttons-container">
+                  <button id="LikeButton" class="custom-button"><i class="fa-solid fa-heart fa-xl" style="color:#fd3d6d;"></i></button>
+                  <p id="LikeAmount" style="font-family: 'Roboto', sans-serif; font-size: small; color: #c4c4c4; margin-top: 3px; margin-bottom: 7px;">0</p>
+                  <button class="custom-button"><i class="fa-solid fa-comment-dots fa-xl"></i></button>
+                  <p style="font-family: 'Roboto', sans-serif; font-size: small; color: #c4c4c4; margin-top: 3px; margin-bottom: 7px;">0</p>
+                  <button class="custom-button"><i class="fa-sharp fa-solid fa-share fa-xl"></i></button>
+                  <p style="font-family: 'Roboto', sans-serif; font-size: small; color: #c4c4c4; margin-top: 3px; margin-bottom: 7px;">0</p>
+                </div>
+              </div>
+            </div>
+            <button class="custom-button" onclick="FetchNewVideo()"><i class="fa-solid fa-arrow-down fa-beat fa-xl"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="right" style="height:100%;width:20%;">
+        <div class="header"></div>
+        <div class="main"></div>
+      </div>
+    </div>
+    <script>
+
+    let SIGNEDINID = ""
+    let VIEWINGVIDEO = ""
+    let VIEWINGVIDEOOWNER = ""
+
+    function GoToProfileOfVideoOwner() {
+      location.href = `/profile?id=${VIEWINGVIDEOOWNER}`
+    }
+
+    function FetchNewVideo() {
+      fetch('/Azare/Fetch/Video/Random', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        })
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          return alert(data.message)
+        }
+
+        VIEWINGVIDEO = data.message[0].ID
+        VIEWINGVIDEOOWNER = data.message[0].OWNER_ID
+
+        if (data.user[0].USR_APPROVED) {
+          document.getElementById("VideoVerifiedDisplay").style.display = "inline";
+        } else {
+          document.getElementById("VideoVerifiedDisplay").style.display = "none";
+        }
+
+        if (data.message[0].CAPTION != "") {
+          document.getElementById("captionDisplay").innerText = data.message[0].CAPTION
+          document.getElementById("captionDisplay").style.display = "inline"
+        } else {
+          document.getElementById("captionDisplay").innerHTML = `<i class='fa-solid fa-music fa-2xs'></i> original sound - ${data.user[0].USR_USERNAME}`
+        }
+
+        console.log(data.likes)
+        document.getElementById("LikeAmount").innerText = data.likes.length
+        document.getElementById("VideoImageDisplay").src = `./UserUploaded/images/${data.user[0].USR_IMAGE}`
+        document.getElementById("myVideo").src = `./UserUploaded/videos/${data.message[0].FILE_NAME}`
+        document.getElementById("VideoUsernameDisplay").innerText = `@${data.user[0].USR_USERNAME}`
+      })
+      .catch(error => console.error(error));
+    }
+
+
+    function GoToProfile() {
+      location.href = `/profile?id=${SIGNEDINID}`
+    }
+
+    function OpenLogInWindowEmbed() {
+      document.getElementById("LogInWrapper").style.visibility = "visible";
+      document.getElementById("LogInContainer").style.visibility = "visible";
+    }
+
+    const videoContainer = document.querySelector('.video-container');
+    const video = document.querySelector('#myVideo')
+
+    videoContainer.addEventListener('click', function() {
+      if (video.paused) {
+        video.play();
+        playPauseButton.innerHTML = '<i class="fa fa-pause"></i>';
+      } else {
+        video.pause();
+        playPauseButton.innerHTML = '<i class="fa fa-play"></i>';
+      }
+    });
+
+
+    const playPauseButton = document.querySelector('.play-pause-button');
+    const timelineProgress = document.querySelector('.timeline-progress');
+    const timelineContainer = document.querySelector('.timeline-container');
+
+    let isPlaying = false;
+
+    playPauseButton.addEventListener('click', function() {
+      if (isPlaying) {
+        video.pause();
+        playPauseButton.innerHTML = '<i class="fa fa-play"></i>';
+      } else {
+        video.play();
+        playPauseButton.innerHTML = '<i class="fa fa-pause"></i>';
+      }
+      isPlaying = !isPlaying;
+    });
+
+    video.addEventListener('timeupdate', function() {
+      const progress = (video.currentTime / video.duration) * 100;
+      timelineProgress.style.width = progress + '%';
+    });
+
+    timelineContainer.addEventListener('click', function(event) {
+      const timelineWidth = timelineContainer.offsetWidth;
+      const clickedPosition = event.offsetX;
+      const newTime = (clickedPosition / timelineWidth) * video.duration;
+      video.currentTime = newTime;
+    });
+
+
+
+    function TerminateSession() {
+      fetch('/Session/Remove', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: formData.toString()
+        })
+      .then(response => response.json())
+      .then(data => {
+        if (data.err) {
+          return alert(data.message)
+        }
+
+        location.href = "/home"
+      })
+      .catch(error => console.error(error));
+    }
+
+
+    const burgerMenu = document.getElementById('burger-menu');
+const popUpWindow = document.getElementById('pop-up-window');
+
+burgerMenu.addEventListener('click', function(event) {
+  const burgerMenuRect = burgerMenu.getBoundingClientRect();
+  popUpWindow.style.top = burgerMenuRect.bottom + 'px';
+  popUpWindow.style.right = window.innerWidth - burgerMenuRect.right + 'px';
+  popUpWindow.style.display = 'block';
+
+  event.stopPropagation(); // prevent the click event from propagating to document
+});
+
+popUpWindow.addEventListener('click', function(event) {
+  event.stopPropagation(); // prevent the click event from propagating to document
+});
+
+document.addEventListener('click', function() {
+  popUpWindow.style.display = 'none';
+});
+    
+    const SUform = document.querySelector('#signupForm');
+    const SUuserNameInput = document.querySelector('#NEWuserNameInput');
+    const SUpassWordInput = document.querySelector('#NEWpassWordInput');
+    const SUpassWordInput2 = document.querySelector('#NEWpassWordInput2');
+    const SUsubmitButton = document.querySelector('#SignUp');
+  
+    SUsubmitButton.addEventListener('click', (event) => {
+
+      if (document.getElementById("SignUp").disabled == false) {
+        document.getElementById("SignUp").disabled = true;
+        document.getElementById("SignUp").innerHTML = "<span class='spinner'></span>"
+  
+        event.preventDefault();
+        var name = SUuserNameInput.value;
+        var pass = SUpassWordInput.value;
+        var confPass = SUpassWordInput2.value;
+    
+        SUpassWordInput.value = ""
+        SUpassWordInput2.value = ""
+    
+        const formData = new URLSearchParams();
+        formData.append('name', name);
+        formData.append('password', pass);
+        formData.append('ConfPass', confPass)
+        fetch('/establishAuth', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: formData.toString()
+        })
+      .then(response => response.json())
+      .then(data => {
+        if (data) {
+          console.log(data.err)
+          if (data.err == "true") {
+            document.getElementById("ErrorText").innerHTML = `${data.content}`
+            document.getElementById("ErrorBox").style.visibility = "visible";
+            document.getElementById("SignUp").innerHTML = "Sign in"
+            document.getElementById("SignUp").disabled = false;
+          }
+
+          if (data.err == "false") {
+            const errorBox = document.getElementById("ErrorBox");
+              errorBox.style.backgroundColor = "rgba(0,100,0,0.5)";
+  
+              errorBox.style.boxShadow = "0 0 0 2px green";
+              document.getElementById("SignUp").innerHTML = "Sign in"
+              document.getElementById("SignUp").disabled = false;
+            document.getElementById("ErrorText").innerHTML = `${data.content}`
+            document.getElementById("ErrorBox").style.visibility = "visible";
+
+            setTimeout(function() {
+                location.href = '/home';
+              }, 2000);
+          }
+        }
+      })
+      .catch(error => console.error(error));
+      }
+  });
+
+    fetch('/Fetch/FrontpageUsers', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+        })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          data.fetchedUsers.forEach(userData => {
+            let SuggestedAccountsDiv = document.getElementById("SuggestedAccountsDiv")
+
+            if (userData.USR_APPROVED) {
+              SuggestedAccountsDiv.innerHTML += `<a href='/profile?id=${userData.USR_ID}' style='text-decoration:none; color:white;'><div class="NaviHoverFade" style="width:100%;height:4vh; border-radius: 5px; margin-bottom: 5px;display: flex; align-items: center;flex-direction: row;font-family: 'Roboto', sans-serif;"><img src="./UserUploaded/images/${userData.USR_IMAGE}" style="margin-left:5px;border-radius: 100%; height:75%;margin-right: 10px;">@${userData.USR_USERNAME}<img src="./Images/VERIFIED.png" style="margin-left: 3px; height:14px;"></div></a>`
+            } else {
+              SuggestedAccountsDiv.innerHTML += `<a href='/profile?id=${userData.USR_ID}' style='text-decoration:none; color:white;'><div class="NaviHoverFade" style="width:100%;height:4vh; border-radius: 5px; margin-bottom: 5px;display: flex; align-items: center;flex-direction: row;font-family: 'Roboto', sans-serif;"><img src="./UserUploaded/images/${userData.USR_IMAGE}" style="margin-left:5px;border-radius: 100%; height:75%;margin-right: 10px;">@${userData.USR_USERNAME}</div></a>`
+            }
+          })
+        } else {
+          console.log("Failed to fetch Suggested Accounts")
+        }
+      })
+      .catch(error => console.error(error));
+
+  // 
+
+
+
+
+
+
+      // GO TO HOME PAGE FUNCTION. USED WHEN SIGNING IN / UP.
+
+      function HomePage() {
+        location.href = '/home';
+      }
+
+      // LOGIN & SIGNUP BUTTON HANDLERS
+
+      const CloseSignUpButton = document.querySelector("#CloseSignup");
+
+      CloseSignUpButton.addEventListener("click", function() {
+        document.getElementById("SignUpWrapper").style.visibility = "hidden";
+        document.getElementById("ErrorBox").style.visibility = "hidden";
+        document.getElementById("SignUpContainer").style.visibility = "hidden";
+      });
+
+      const OpenSignUpWindow = document.querySelector("#OpenSignUpWindow");
+
+      OpenSignUpWindow.addEventListener("click", function() {
+        document.getElementById("SignUpWrapper").style.visibility = "visible";
+        document.getElementById("SignUpContainer").style.visibility = "visible";
+      });
+
+      const CloseLoginButton = document.querySelector("#CloseLogin");
+
+      CloseLoginButton.addEventListener("click", function() {
+        document.getElementById("LogInWrapper").style.visibility = "hidden";
+        document.getElementById("ErrorBox").style.visibility = "hidden";
+        document.getElementById("LogInContainer").style.visibility = "hidden";
+      });
+
+      const OpenLogInWindow = document.querySelector("#OpenLogInWindow");
+
+      OpenLogInWindow.addEventListener("click", function() {
+        document.getElementById("LogInWrapper").style.visibility = "visible";
+        document.getElementById("LogInContainer").style.visibility = "visible";
+      });
+
+      // Check if user already has active ACCESS_TOKEN | IF SO: gather user data. 
+      const formData = new URLSearchParams();
+      fetch('/authenticate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: formData.toString()
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.action == true)  {
+          document.getElementById("UsernameDisplay").innerHTML = `${data.username}`
+          document.getElementById("ProfileImage").src = `./UserUploaded/images/${data.image}`
+          SIGNEDINID = data.id
+          if (data.verified) {
+            if (data.verified == 1) {
+              // DISPLAY VERIFICATION BADGE ON HEADER? UNCOMMENT IF YES.
+              //document.getElementById("VerifiedSymbol").style.display = "inline";
+            }
+          }
+          document.getElementById("OpenLogInWindow").style.display = "none";
+          document.getElementById("OpenSignUpWindow").style.display = "none";
+          document.getElementById("ProfileImage").style.display = "inline";
+          document.getElementById("burger-menu").style.display = "flex"
+          document.getElementById("UsernameDisplay").style.display = "inline";
+          document.getElementById("YourProfileButton").style.display = "flex";
+          document.getElementById("ActionDiv").style.visibility = "visible";
+        } else {
+          document.getElementById("LoginNotification").style.display = "inline";
+          document.getElementById("LoginNotificationBorder").style.display = "flex";
+          document.getElementById("OpenLogInWindow").style.display = "inline";
+          document.getElementById("OpenSignUpWindow").style.display = "inline";
+          document.getElementById("ProfileImage").style.display = "none";
+          document.getElementById("UsernameDisplay").style.display = "none";
+          document.getElementById("ActionDiv").style.visibility = "visible";
+        }
+
+      })
+      .catch(error => console.error(error));
+
+      // CHECK REDIRECT ACTION. | REMAKE TO FETCH THE CLIENT FROM BACKEND TO SHOW ELEMENTS INSTEAD OF URL ENCODED.
+
+      function CheckAction() {
+        const message = new URLSearchParams(window.location.search).get('action');
+        if (message) {
+          if (message === 'login') {
+            document.getElementById("LogInWrapper").style.visibility = "visible";
+            document.getElementById("LogInContainer").style.visibility = "visible";
+          }
+  
+          if (message === 'signup') {
+            document.getElementById("SignUpWrapper").style.visibility = "visible";
+            document.getElementById("SignUpContainer").style.visibility = "visible";
+          }
+        }
+      }
+
+      // LOGIN HANDLER.
+
+      const form = document.querySelector('#loginForm');
+      const userNameInput = document.querySelector('#userNameInput');
+      const passWordInput = document.querySelector('#passWordInput');
+      const submitButton = document.querySelector('#SignIn');
+
+      submitButton.addEventListener('click', (event) => {
+
+        if (document.getElementById("SignIn").disabled == false) {
+
+          document.getElementById("SignIn").disabled = true;
+          document.getElementById("SignIn").innerHTML = "<span class='spinner'></span>"
+  
+          event.preventDefault();
+          var name = userNameInput.value;
+          var pass = passWordInput.value;
+  
+          passWordInput.value = ""
+  
+          const formData = new URLSearchParams();
+          formData.append('name', name);
+          formData.append('password', pass);
+          fetch('/authorize', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: formData.toString()
+          })
+        .then(response => response.json())
+        .then(data => {
+          if (data.error) {
+            if (data.error == "uaP") {
+              document.getElementById("SignIn").innerHTML = "Sign in"
+              document.getElementById("SignIn").disabled = false;
+              document.getElementById("ErrorText").innerHTML = "Incorrect username or password was provided."
+              document.getElementById("ErrorBox").style.visibility = "visible";
+            }
+            if (data.error == "AuaP") {
+  
+              const errorBox = document.getElementById("ErrorBox");
+              errorBox.style.backgroundColor = "rgba(0,100,0,0.5)";
+  
+              errorBox.style.boxShadow = "0 0 0 2px green";
+              document.getElementById("ErrorText").innerHTML = "Login success. Redirecting..."
+              document.getElementById("ErrorBox").style.visibility = "visible";
+              setTimeout(function() {
+                location.href = '/home';
+              }, 2000);
+            }
+          }
+        })
+        .catch(error => console.error(error));
+      }
+    });
+    </script>
+  </body>
+</html>

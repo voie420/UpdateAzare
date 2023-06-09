@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css"></link>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./Images/LogoEmbed.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <title>Azare</title>
+  </head>
+  <body>
+  <div style="position: relative;">
+    <div id="ErrorBox" style="z-index: 3;visibility:hidden;position: absolute;left:50%;transform: translate(-50%);margin-top: 100px;background-color: rgba(125, 0, 0, 0.5);align-self:center;margin-top:50px;box-shadow: 0 0 0 2px red; border-width: 10px; border-radius: 10px; width:400px; height:75px;display: flex;justify-content: center;align-items: center;">
+      <p id="ErrorText" style="font-family: 'Roboto', sans-serif; color:white;">An error has occurred.</p>
+    </div>
+  </div>
+
+<!-- SIGNUP WINDOW -->
+
+<div id="SignUpWrapper" class="popupwrapper" style="z-index: 2;visibility: hidden;">
+    <div id="SignUpContainer" class="popup-container" style="visibility: hidden;">
+    <div id="ExitContainer" style="float: right;">
+        <button id="CloseSignup" class="HoverPointer" style="height:40px; width:40px; border-radius: 90px; border-width:0px; background-color: #424242; margin-top: 5px; margin-right: 5px; display:flex; justify-content: center; align-content: center; align-items: center;"><img draggable="false" src="./Images/X.png" style="width:18px; height:18px;"></button>
+    </div>
+    <form id="signupForm" style="width:100%;height:100%; display: flex; flex-direction: column; align-items: center;">
+        <br>
+        <p style="font-family: 'Roboto', sans-serif; font-size:x-large; margin-top: 5px;">Sign up for Azare</p>
+        <div class="user-box" style="width:100%;display: flex; align-items: center;flex-direction: column;">
+        <label style="font-family: 'Roboto', sans-serif;margin-bottom: 5px;">Username</label>
+        <input style="font-family: 'Roboto', sans-serif;  font-size:medium;" type="text" id="NEWuserNameInput" class="InputBox" autocomplete="off" required="">
+        </div>
+        <div class="user-box" style="width:100%;display: flex; align-items: center;flex-direction: column;margin-top:10px;">
+        <label style="font-family: 'Roboto', sans-serif; margin-bottom: 5px;">Password</label>
+        <input style="font-family: 'Roboto', sans-serif; font-size:medium;" type="password" id="NEWpassWordInput" class="InputBox" autocomplete="off" required="">
+        </div>
+        <div class="user-box" style="width:100%;display: flex; align-items: center;flex-direction: column;margin-top:10px; margin-bottom: 40px;">
+        <label style="font-family: 'Roboto', sans-serif; margin-bottom: 5px;">Confirm Password</label>
+        <input style="font-family: 'Roboto', sans-serif; font-size:medium;" type="password" id="NEWpassWordInput2" class="InputBox" autocomplete="off" required="">
+        </div>
+        <button id="SignUp" style="position: relative;" class="SignInButton">Sign up</button>
+        <div style="display:flex;flex-direction: row; align-items: center;">
+        <p style="font-family: 'Roboto', sans-serif;">Already have an account?</p>
+        <a style="font-family: 'Roboto', sans-serif; text-decoration: none; margin-left: 7px;" href="/home?action=login">Log in</a>
+        </div>
+    </form>
+    </div>
+</div>
+
+<!-- LOGIN WINDOW -->
+
+<div id="LogInWrapper" class="popupwrapper" style="z-index: 2;visibility: hidden;">
+    <div id="LogInContainer" class="popup-container" style="visibility: hidden;">
+    <div id="ExitContainer" style="float: right;">
+        <button id="CloseLogin" class="HoverPointer" style="height:40px; width:40px; border-radius: 90px; border-width:0px; background-color: #424242; margin-top: 5px; margin-right: 5px; display:flex; justify-content: center; align-content: center; align-items: center;"><img draggable="false" src="./Images/X.png" style="width:18px; height:18px;"></button>
+    </div>
+    <form id="loginForm" style="width:100%;height:100%; display: flex; flex-direction: column; align-items: center;">
+        <br>
+        <p style="font-family: 'Roboto', sans-serif; font-size:x-large; margin-top: 5px;">Log in to Azare</p>
+        <div class="user-box" style="width:100%;display: flex; align-items: center;flex-direction: column;">
+        <label style="font-family: 'Roboto', sans-serif;margin-bottom: 5px;">Username</label>
+        <input style="font-family: 'Roboto', sans-serif;  font-size:medium;" type="text" id="userNameInput" class="InputBox" autocomplete="off" required="">
+        </div>
+        <div class="user-box" style="width:100%;display: flex; align-items: center;flex-direction: column;margin-top:10px; margin-bottom: 40px;">
+        <label style="font-family: 'Roboto', sans-serif; margin-bottom: 5px;">Password</label>
+        <input style="font-family: 'Roboto', sans-serif; font-size:medium;" type="password" id="passWordInput" class="InputBox" autocomplete="off" required="">
+        </div>
+        <button id="SignIn" style="position: relative;" class="SignInButton">Sign in</button>
+        <div style="display:flex;flex-direction: row; align-items: center;">
+        <p style="font-family: 'Roboto', sans-serif;">Don't have an account?</p>
+        <a style="font-family: 'Roboto', sans-serif; text-decoration: none; margin-left: 7px;" href="/home?action=signup">Sign up</a>
+        </div>
+    </form>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+
+<div class="container">
+    <div class="left" style="height:100%;width:20%;">
+    <div class="header"></div>
+    <div class="main"></div>
+    </div>
+    <div class="middle" style="height:100%;width:60%;">
+    <div class="header">
+        <div style="height:100%;;display:flex;align-items: center;"><button onclick="HomePage()" class="HoverPointer" style="height:100%;align-items:center;border-width:0px;background-color: rgba(0,0,0,0);display: flex; flex-direction: row;"><img draggable="false" src="./Images/Logo.png" style="height: 70%;"><p style="margin-left:10px;font-size:large;font-family: 'Roboto', sans-serif;">AZARE</p></button></div>
+        <div id="ActionDiv" style="visibility:hidden;height:100%;display:flex;align-items: center;"><button onclick="GoToProfile()" class="fadeBgHover" title="Your profile" style="padding-left:10px;padding-right:10px;height:100%;display: flex; align-items: center; border-width: 0px;"><div style="height:100%;display:flex;align-items: center;margin-right: 10px;"><p id="UsernameDisplay" style="margin:0px;display:none;font-family: 'Roboto', sans-serif;"></p><img id="VerifiedSymbol" src="./Images/VERIFIED.png" draggable="false" style="display:none;height:25%;margin-left: 3px;"></div><img id="ProfileImage" draggable="false" src="./UserUploaded/images/default.png" style="display:none;height:60%;border-radius:180px;border-width: 50px; border-color: #0056a1;"></button><button id="OpenLogInWindow" class="loginButton" style="font-family: 'Roboto', sans-serif; margin-right: 10px;">Sign in</button><button id="OpenSignUpWindow" class="signupButton" style="font-family: 'Roboto', sans-serif;">Sign up</button><button id="burger-menu" style="display: none; background-color: rgba(0,0,0,0); border-width: 0px;"><i class="fa-sharp fa-solid fa-bars"></i></button></div>
+        <div id="pop-up-window" style="border-radius: 5px; background-color: #232323;">
+          <div style="border-width: 0px;display: flex; flex-direction: row;align-items: center;">
+            <button onclick="TerminateSession()" style="background-color: #b00909; height:20%;border-width: 0px;">Sign out</button>
+          </div>
+        </div>
+    </div>
+    <div class="main">
+        <div style="display:flex;justify-content: space-between;">
+            <div style="width:100%;height:20vh; display: flex; align-items: center; flex-direction: row;">
+                <img id="EmbedProfileImage" draggable="false" src="./UserUploaded/images/default.png" style="width:12.5vh; border-radius: 100%;">
+                <div style="margin-left:20px; position: relative;display: flex; flex-direction: column;">
+                    <div style="display: flex; flex-direction: row; align-items: center;">
+                        <p id="DisplayUsername" style="font-size:xx-large;font-family: 'Roboto', sans-serif; margin: 0px;"><span class='spinner'></span></p>
+                        <img id="EmbedVerifiedSymbol" draggable="false" src="./Images/VERIFIED.png" style=" margin-left:4px;height:18px;visibility: hidden;">
+                    </div>
+                    <div style="display: flex; flex-direction: row; margin-top: 10px;">
+                        <div style="display: flex; flex-direction: row;align-items: center; margin-right: 20px;">
+                          <button class="HoverPointer" onclick="goToFollowing()" style="padding:0px;margin:0px;margin-right: 5px;border-width: 0px; background-color: rgba(0,0,0,0);"><h3 id="CreatorFollowing" style="font-family: 'Roboto', sans-serif;margin: 0px; font-size: large;">0</h3></button>
+                            <p style="margin:0px;font-family: 'Roboto', sans-serif;">Following</p>
+                        </div>
+                        <div style="display: flex; flex-direction: row;align-items: center; margin-right: 20px;">
+                            <button class="HoverPointer" onclick="goToFollowers()" style="padding:0px;margin:0px;margin-right: 5px;border-width: 0px; background-color: rgba(0,0,0,0);"><h3 id="CreatorFollowers" style="font-family: 'Roboto', sans-serif;margin: 0px; font-size: large;">0</h3></button>
+                            <p style="margin:0px;font-family: 'Roboto', sans-serif;">Followers</p>
+                        </div>
+                        <div style="display: flex; flex-direction: row;align-items: center;">
+                          <button class="HoverPointer" onclick="openLikes()" style="padding:0px;margin:0px;margin-right: 5px;border-width: 0px; background-color: rgba(0,0,0,0);"><h3 id="CreatorLikes" style="font-family: 'Roboto', sans-serif;margin: 0px; font-size: large;">0</h3></button>
+                            <p style="margin:0px;font-family: 'Roboto', sans-serif;">Likes</p>
+                        </div>
+                    </div>
+                    <p style="margin:0px; margin-top:30px;font-family: 'Roboto', sans-serif;" id="StatusText"></p>
+                </div>
+            </div>
+            <div style="height:20vh; display:flex;align-items: center;position: relative;">
+                <span id="ActionButtonLoader" class='spinner'></span>
+                <button onclick="GoToUpload()" id="Upload" class="FollowButton" style="display:none;margin-right: 5px;"><i class="fa-solid fa-upload" style="margin-right: 3px;"></i>Upload</button>
+                <button onclick="FollowAccount()" id="FollowButton" class="FollowButton" style="display:none;">Follow</button>
+                <button onclick="UnFollowAccount()" id="FollowingButton" class="FollowingButton" style="display:none; flex-direction: row; align-items: center;"><i class="fa-solid fa-check" style="margin-right: 3px;"></i>Following</button>
+                <button onclick="EditProfile()" id="EditButton" class="EditButton" style="display:none; flex-direction: row; align-items: center;"><i class="fa-solid fa-pen" style="margin-right: 3px;"></i>Edit profile</button>
+            </div>
+        </div>
+        <hr style="height:2px;border-width: 0px;background-color: rgb(55, 55, 55);">
+    </div>
+    </div>
+    <div class="right" style="height:100%;width:20%;">
+    <div class="header"></div>
+    <div class="main"></div>
+    </div>
+</div>
+<script>
+
+let SIGNEDINID = ""
+let GottenIDinfo = false
+var intervalId;
+
+function GoToProfile() {
+  location.href = `/profile?id=${SIGNEDINID}`
+}
+
+function GoToUpload() {
+      location.href = `/upload`
+    }
+
+const urlParams = new URLSearchParams(window.location.search);
+
+function EditProfile() {
+  location.href = `/edit?id=${SIGNEDINID}`
+}
+
+function goToFollowers() {
+  location.href = `/followers?id=${urlParams.get('id')}`
+}
+
+function goToFollowing() {
+  location.href = `/following?id=${urlParams.get('id')}`
+}
+
+function openLikes() {
+  alert(`${document.getElementById("DisplayUsername").innerHTML} has recieved ${document.getElementById("CreatorLikes").innerHTML} likes across all Comments & Videos`)
+}
+
+
+
+intervalId = setInterval(GetProfileActions, 100);
+
+
+
+
+function FollowAccount() {
+    if (urlParams.get('id')) {
+        fetch(`/followAcc?id=${urlParams.get('id')}&sID=${SIGNEDINID}`, {
+            method: 'GET',
+            headers: {
+            },
+        })
+        .then(data => {
+            location.reload()
+        })
+        .catch(error => console.error(error));
+    }
+}
+
+function UnFollowAccount() {
+    if (urlParams.get('id')) {
+        fetch(`/unfollowAcc?id=${urlParams.get('id')}&sID=${SIGNEDINID}`, {
+            method: 'GET',
+            headers: {
+            },
+        })
+            .then(data => {
+                location.reload()
+            })
+            .catch(error => console.error(error));
+    }
+}
+
+
+function OpenLogIn() {
+  document.getElementById("LogInWrapper").style.visibility = "visible";
+  document.getElementById("LogInContainer").style.visibility = "visible";
+}
+
+// CHECK IF CLIENT IS LOGGED IN AS THE USER THAT IS BEING VIEWED BY THE CLIENT
+
+function GetProfileActions() {
+  if (SIGNEDINID != "") {
+    if (SIGNEDINID != "NOUSER") {
+      clearInterval(intervalId);
+      fetch(`/checkProfileActions?id=${urlParams.get('id')}&sID=${SIGNEDINID}`, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+        })
+      .then(response => response.json())
+      .then(data => {
+  
+        document.getElementById("FollowButton").onclick = FollowAccount;
+        document.getElementById("FollowButton").style.display = "none";
+          if (data.isOwner == true) {
+            document.getElementById("Upload").style.display = "inline";
+            document.getElementById("EditButton").style.display = "inline";
+          } else {
+              if (data.Following == true) {
+                  document.getElementById("FollowingButton").style.display = "inline";
+              } else {
+                  document.getElementById("FollowButton").style.display = "inline";
+              }
+          }
+          document.getElementById("ActionButtonLoader").style.display = "none";
+      })
+      .catch(error => console.error(error));
+    } else {
+      document.getElementById("FollowButton").onclick = OpenLogIn;
+      document.getElementById("FollowButton").style.display = "inline";
+      document.getElementById("ActionButtonLoader").style.display = "none";
+    }
+
+  }
+}
+
+
+
+// FETCH CREATOR STATS
+if (urlParams.get('id')) {
+  fetch(`/fetchStats?id=${urlParams.get('id')}`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+  })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("CreatorFollowing").innerHTML = data.userFollowing
+        document.getElementById("CreatorFollowers").innerHTML = data.userFollowers
+        document.getElementById("CreatorLikes").innerHTML = data.userLikes
+    })
+    .catch(error => console.error(error));
+
+    fetch(`/fetchUser?id=${urlParams.get('id')}`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+  })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("EmbedProfileImage").src = `./UserUploaded/images/${data.image}`
+        document.getElementById("DisplayUsername").innerHTML = `@${data.username}`
+        document.getElementById("StatusText").innerHTML = `${data.status}`
+
+        if (data.verified == 1) { document.getElementById("EmbedVerifiedSymbol").style.visibility = "visible" }
+    })
+    .catch(error => console.error(error));
+}
+
+
+
+
+// SIGNUP HANDLER
+
+const SUform = document.querySelector('#signupForm');
+    const SUuserNameInput = document.querySelector('#NEWuserNameInput');
+    const SUpassWordInput = document.querySelector('#NEWpassWordInput');
+    const SUpassWordInput2 = document.querySelector('#NEWpassWordInput2');
+    const SUsubmitButton = document.querySelector('#SignUp');
+  
+    SUsubmitButton.addEventListener('click', (event) => {
+
+      if (document.getElementById("SignUp").disabled == false) {
+        document.getElementById("SignUp").disabled = true;
+        document.getElementById("SignUp").innerHTML = "<span class='spinner'></span>"
+  
+        event.preventDefault();
+        var name = SUuserNameInput.value;
+        var pass = SUpassWordInput.value;
+        var confPass = SUpassWordInput2.value;
+    
+        SUpassWordInput.value = ""
+        SUpassWordInput2.value = ""
+    
+        const formData = new URLSearchParams();
+        formData.append('name', name);
+        formData.append('password', pass);
+        formData.append('ConfPass', confPass)
+        fetch('/establishAuth', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: formData.toString()
+        })
+      .then(response => response.json())
+      .then(data => {
+        if (data) {
+          console.log(data.err)
+          if (data.err == "true") {
+            document.getElementById("ErrorText").innerHTML = `${data.content}`
+            document.getElementById("ErrorBox").style.visibility = "visible";
+            document.getElementById("SignUp").innerHTML = "Sign in"
+            document.getElementById("SignUp").disabled = false;
+          }
+
+          if (data.err == "false") {
+            const errorBox = document.getElementById("ErrorBox");
+              errorBox.style.backgroundColor = "rgba(0,100,0,0.5)";
+  
+              errorBox.style.boxShadow = "0 0 0 2px green";
+              document.getElementById("SignUp").innerHTML = "Sign in"
+              document.getElementById("SignUp").disabled = false;
+            document.getElementById("ErrorText").innerHTML = `${data.content}`
+            document.getElementById("ErrorBox").style.visibility = "visible";
+
+            setTimeout(function() {
+                location.href = '/home';
+              }, 2000);
+          }
+        }
+      })
+      .catch(error => console.error(error));
+      }
+  });
+
+
+
+// GO TO HOME PAGE FUNCTION. USED WHEN SIGNING IN / UP.
+
+function HomePage() {
+        location.href = '/home';
+      }
+
+      // LOGIN & SIGNUP BUTTON HANDLERS
+
+      const CloseSignUpButton = document.querySelector("#CloseSignup");
+
+      CloseSignUpButton.addEventListener("click", function() {
+        document.getElementById("SignUpWrapper").style.visibility = "hidden";
+        document.getElementById("ErrorBox").style.visibility = "hidden";
+        document.getElementById("SignUpContainer").style.visibility = "hidden";
+      });
+
+      const OpenSignUpWindow = document.querySelector("#OpenSignUpWindow");
+
+      OpenSignUpWindow.addEventListener("click", function() {
+        document.getElementById("SignUpWrapper").style.visibility = "visible";
+        document.getElementById("SignUpContainer").style.visibility = "visible";
+      });
+
+      const CloseLoginButton = document.querySelector("#CloseLogin");
+
+      CloseLoginButton.addEventListener("click", function() {
+        document.getElementById("LogInWrapper").style.visibility = "hidden";
+        document.getElementById("ErrorBox").style.visibility = "hidden";
+        document.getElementById("LogInContainer").style.visibility = "hidden";
+      });
+
+      const OpenLogInWindow = document.querySelector("#OpenLogInWindow");
+
+      OpenLogInWindow.addEventListener("click", function() {
+        document.getElementById("LogInWrapper").style.visibility = "visible";
+        document.getElementById("LogInContainer").style.visibility = "visible";
+      });
+
+      function TerminateSession() {
+   fetch('/Session/Remove', {
+      method: 'POST',
+      headers: {
+         'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: formData.toString()
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.err) {
+          return alert(data.message)
+        }
+
+        location.href = "/home"
+      })
+      .catch(error => console.error(error));
+    }
+
+      const burgerMenu = document.getElementById('burger-menu');
+      const popUpWindow = document.getElementById('pop-up-window');
+
+      burgerMenu.addEventListener('click', function(event) {
+        const burgerMenuRect = burgerMenu.getBoundingClientRect();
+        popUpWindow.style.top = burgerMenuRect.bottom + 'px';
+        popUpWindow.style.right = window.innerWidth - burgerMenuRect.right + 'px';
+        popUpWindow.style.display = 'block';
+
+        event.stopPropagation(); // prevent the click event from propagating to document
+      });
+
+      popUpWindow.addEventListener('click', function(event) {
+        event.stopPropagation(); // prevent the click event from propagating to document
+      });
+
+      document.addEventListener('click', function() {
+        popUpWindow.style.display = 'none';
+      });
+
+
+      // Check if user already has active ACCESS_TOKEN | IF SO: gather user data. 
+      const formData = new URLSearchParams();
+      fetch('/authenticate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: formData.toString()
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.action == true)  {
+          document.getElementById("UsernameDisplay").innerHTML = `${data.username}`
+          document.getElementById("ProfileImage").src = `./UserUploaded/images/${data.image}`
+          SIGNEDINID = data.id
+          if (data.verified) {
+            if (data.verified == 1) {
+              // DISPLAY VERIFICATION BADGE ON HEADER? UNCOMMENT IF YES.
+              //document.getElementById("VerifiedSymbol").style.display = "inline";
+            }
+          }
+          document.getElementById("OpenLogInWindow").style.display = "none";
+          document.getElementById("OpenSignUpWindow").style.display = "none";
+          document.getElementById("ProfileImage").style.display = "inline";
+          document.getElementById("UsernameDisplay").style.display = "inline";
+          document.getElementById("burger-menu").style.display = "inline";
+          document.getElementById("ActionDiv").style.visibility = "visible";
+        } else {
+          SIGNEDINID = "NOUSER"
+          document.getElementById("OpenLogInWindow").style.display = "inline";
+          document.getElementById("OpenSignUpWindow").style.display = "inline";
+          document.getElementById("ProfileImage").style.display = "none";
+          document.getElementById("UsernameDisplay").style.display = "none";
+          document.getElementById("ActionDiv").style.visibility = "visible";
+        }
+
+      })
+      .catch(error => console.error(error));
+
+
+      const form = document.querySelector('#loginForm');
+      const userNameInput = document.querySelector('#userNameInput');
+      const passWordInput = document.querySelector('#passWordInput');
+      const submitButton = document.querySelector('#SignIn');
+
+      submitButton.addEventListener('click', (event) => {
+
+        if (document.getElementById("SignIn").disabled == false) {
+
+          document.getElementById("SignIn").disabled = true;
+          document.getElementById("SignIn").innerHTML = "<span class='spinner'></span>"
+  
+          event.preventDefault();
+          var name = userNameInput.value;
+          var pass = passWordInput.value;
+  
+          passWordInput.value = ""
+  
+          const formData = new URLSearchParams();
+          formData.append('name', name);
+          formData.append('password', pass);
+          fetch('/authorize', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: formData.toString()
+          })
+        .then(response => response.json())
+        .then(data => {
+          if (data.error) {
+            if (data.error == "uaP") {
+              document.getElementById("SignIn").innerHTML = "Sign in"
+              document.getElementById("SignIn").disabled = false;
+              document.getElementById("ErrorText").innerHTML = "Incorrect username or password was provided."
+              document.getElementById("ErrorBox").style.visibility = "visible";
+            }
+            if (data.error == "AuaP") {
+  
+              const errorBox = document.getElementById("ErrorBox");
+              errorBox.style.backgroundColor = "rgba(0,100,0,0.5)";
+  
+              errorBox.style.boxShadow = "0 0 0 2px green";
+              document.getElementById("ErrorText").innerHTML = "Login success. Redirecting..."
+              document.getElementById("ErrorBox").style.visibility = "visible";
+              setTimeout(function() {
+                location.href = '/home';
+              }, 2000);
+            }
+          }
+        })
+        .catch(error => console.error(error));
+      }
+    });
+
+
+
+</script>
+</html>

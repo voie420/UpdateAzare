@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css"></link>
+    <link rel="icon" href="./Images/LogoEmbed.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <title>Azare</title>
+  </head>
+  <body>
+  <div style="position: relative;">
+    <div id="ErrorBox" style="z-index: 3;visibility:hidden;position: absolute;left:50%;transform: translate(-50%);margin-top: 100px;background-color: rgba(125, 0, 0, 0.5);align-self:center;margin-top:50px;box-shadow: 0 0 0 2px red; border-width: 10px; border-radius: 10px; width:400px; height:75px;display: flex;justify-content: center;align-items: center;">
+      <p id="ErrorText" style="font-family: 'Roboto', sans-serif; color:white;">An error has occurred.</p>
+    </div>
+  </div>
+
+    <!-- SIGNUP WINDOW -->
+
+    <div id="SignUpWrapper" class="popupwrapper" style="z-index: 2;visibility: hidden;">
+      <div id="SignUpContainer" class="popup-container" style="visibility: hidden;">
+        <div id="ExitContainer" style="float: right;">
+          <button id="CloseSignup" class="HoverPointer" style="height:40px; width:40px; border-radius: 90px; border-width:0px; background-color: #424242; margin-top: 5px; margin-right: 5px; display:flex; justify-content: center; align-content: center; align-items: center;"><img draggable="false" src="./Images/X.png" style="width:18px; height:18px;"></button>
+        </div>
+        <form id="signupForm" style="width:100%;height:100%; display: flex; flex-direction: column; align-items: center;">
+          <br>
+          <p style="font-family: 'Roboto', sans-serif; font-size:x-large; margin-top: 5px;">Sign up for Azare</p>
+          <div class="user-box" style="width:100%;display: flex; align-items: center;flex-direction: column;">
+            <label style="font-family: 'Roboto', sans-serif;margin-bottom: 5px;">Username</label>
+            <input style="font-family: 'Roboto', sans-serif;  font-size:medium;" type="text" maxlength = "20" id="NEWuserNameInput" class="InputBox" autocomplete="off" required="">
+          </div>
+          <div class="user-box" style="width:100%;display: flex; align-items: center;flex-direction: column;margin-top:10px;">
+            <label style="font-family: 'Roboto', sans-serif; margin-bottom: 5px;">Password</label>
+            <input style="font-family: 'Roboto', sans-serif; font-size:medium;" type="password" maxlength = "20" id="NEWpassWordInput" class="InputBox" autocomplete="off" required="">
+          </div>
+          <div class="user-box" style="width:100%;display: flex; align-items: center;flex-direction: column;margin-top:10px; margin-bottom: 40px;">
+            <label style="font-family: 'Roboto', sans-serif; margin-bottom: 5px;">Confirm Password</label>
+            <input style="font-family: 'Roboto', sans-serif; font-size:medium;" type="password" maxlength = "20" id="NEWpassWordInput2" class="InputBox" autocomplete="off" required="">
+          </div>
+          <button id="SignUp" style="position: relative;" class="SignInButton">Sign up</button>
+          <div style="display:flex;flex-direction: row; align-items: center;">
+            <p style="font-family: 'Roboto', sans-serif;">Already have an account?</p>
+            <a style="font-family: 'Roboto', sans-serif; text-decoration: none; margin-left: 7px;" href="/home?action=login">Log in</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- LOGIN WINDOW -->
+ 
+    <div id="LogInWrapper" class="popupwrapper" style="z-index: 2;visibility: hidden;">
+      <div id="LogInContainer" class="popup-container" style="visibility: hidden;">
+        <div id="ExitContainer" style="float: right;">
+          <button id="CloseLogin" class="HoverPointer" style="height:40px; width:40px; border-radius: 90px; border-width:0px; background-color: #424242; margin-top: 5px; margin-right: 5px; display:flex; justify-content: center; align-content: center; align-items: center;"><img draggable="false" src="./Images/X.png" style="width:18px; height:18px;"></button>
+        </div>
+        <form id="loginForm" style="width:100%;height:100%; display: flex; flex-direction: column; align-items: center;">
+          <br>
+          <p style="font-family: 'Roboto', sans-serif; font-size:x-large; margin-top: 5px;">Log in to Azare</p>
+          <div class="user-box" style="width:100%;display: flex; align-items: center;flex-direction: column;">
+            <label style="font-family: 'Roboto', sans-serif;margin-bottom: 5px;">Username</label>
+            <input style="font-family: 'Roboto', sans-serif;  font-size:medium;" type="text" id="userNameInput" class="InputBox" autocomplete="off" required="">
+          </div>
+          <div class="user-box" style="width:100%;display: flex; align-items: center;flex-direction: column;margin-top:10px; margin-bottom: 40px;">
+            <label style="font-family: 'Roboto', sans-serif; margin-bottom: 5px;">Password</label>
+            <input style="font-family: 'Roboto', sans-serif; font-size:medium;" type="password" id="passWordInput" class="InputBox" autocomplete="off" required="">
+          </div>
+          <button id="SignIn" style="position: relative;" class="SignInButton">Sign in</button>
+          <div style="display:flex;flex-direction: row; align-items: center;">
+            <p style="font-family: 'Roboto', sans-serif;">Don't have an account?</p>
+            <a style="font-family: 'Roboto', sans-serif; text-decoration: none; margin-left: 7px;" href="/home?action=signup">Sign up</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+
+    <div class="container">
+      <div class="left" style="height:100%;width:20%;">
+        <div class="header"></div>
+        <div class="main"></div>
+      </div>
+      <div class="middle" style="height:100%;width:60%;">
+        <div class="header">
+          <div style="height:100%;;display:flex;align-items: center;"><button onclick="HomePage()" class="HoverPointer" style="height:100%;align-items:center;border-width:0px;background-color: rgba(0,0,0,0);display: flex; flex-direction: row;"><img draggable="false" src="./Images/Logo.png" style="height: 70%;"><p style="margin-left:10px;font-size:large;font-family: 'Roboto', sans-serif;">AZARE</p></button></div>
+          <div id="ActionDiv" style="visibility:hidden;height:100%;display:flex;align-items: center;"><button id="YourProfileButton" onclick="GoToProfile()" class="fadeBgHover" title="Your profile" style="display:none;padding-left:10px;padding-right:10px;height:100%;display: flex; align-items: center; border-width: 0px;"><div style="height:100%;display:flex;align-items: center;margin-right: 10px;"><p id="UsernameDisplay" style="margin:0px;display:none;font-family: 'Roboto', sans-serif;"></p><img id="VerifiedSymbol" src="./Images/VERIFIED.png" draggable="false" style="display:none;height:25%;margin-left: 3px;"></div><img id="ProfileImage" draggable="false" src="./UserUploaded/images/default.png" style="display:none;height:60%;border-radius:180px;border-width: 50px; border-color: #0056a1;"></button><button id="OpenLogInWindow" class="loginButton" style="font-family: 'Roboto', sans-serif; margin-right: 10px;">Sign in</button><button id="OpenSignUpWindow" class="signupButton" style="font-family: 'Roboto', sans-serif;">Sign up</button><button id="burger-menu" style="display: none; background-color: rgba(0,0,0,0); border-width: 0px;"><i class="fa-sharp fa-solid fa-bars"></i></button></div>
+          <div id="pop-up-window" style="border-radius: 5px; background-color: #232323;">
+            <div style="border-width: 0px;display: flex; flex-direction: row;align-items: center;">
+              <button onclick="TerminateSession()" style="background-color: #b00909; height:20%;border-width: 0px;">Sign out</button>
+            </div>
+          </div>
+        </div>
+        <div class="main">
+          <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" name="videoFile">
+            <input type="submit" value="Upload">
+          </form>
+        </div>
+      </div>
+      <div class="right" style="height:100%;width:20%;">
+        <div class="header"></div>
+        <div class="main"></div>
+      </div>
+    </div>
+    <script>
+
+    let SIGNEDINID = ""
+
+    function GoToProfile() {
+      location.href = `/profile?id=${SIGNEDINID}`
+    }
+
+
+      // GO TO HOME PAGE FUNCTION. USED WHEN SIGNING IN / UP.
+
+      function HomePage() {
+        location.href = '/home';
+      }
+
+      // Check if user already has active ACCESS_TOKEN | IF SO: gather user data. 
+      const formData = new URLSearchParams();
+      fetch('/authenticate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: formData.toString()
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.action == true)  {
+          document.getElementById("UsernameDisplay").innerHTML = `${data.username}`
+          document.getElementById("ProfileImage").src = `./UserUploaded/images/${data.image}`
+          SIGNEDINID = data.id
+          if (data.verified) {
+            if (data.verified == 1) {
+              // DISPLAY VERIFICATION BADGE ON HEADER? UNCOMMENT IF YES.
+              //document.getElementById("VerifiedSymbol").style.display = "inline";
+            }
+          }
+          document.getElementById("OpenLogInWindow").style.display = "none";
+          document.getElementById("OpenSignUpWindow").style.display = "none";
+          document.getElementById("burger-menu").style.display = "inline";
+          document.getElementById("ProfileImage").style.display = "inline";
+          document.getElementById("UsernameDisplay").style.display = "inline";
+          document.getElementById("YourProfileButton").style.display = "flex";
+          document.getElementById("ActionDiv").style.visibility = "visible";
+        } else {
+            location.href = "/"
+        }
+
+      })
+      .catch(error => console.error(error));
+
+      function TerminateSession() {
+   fetch('/Session/Remove', {
+      method: 'POST',
+      headers: {
+         'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: formData.toString()
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.err) {
+          return alert(data.message)
+        }
+
+        location.href = "/home"
+      })
+      .catch(error => console.error(error));
+    }
+
+  document.getElementById("uploadForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  var form = event.target;
+  var formData = new FormData(form);
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/upload", true);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        console.log("File uploaded successfully!");
+        // Handle the response from the server, e.g. display the resized file name
+        var response = JSON.parse(xhr.responseText);
+        console.log("Resized file name: " + response.resizedFileName);
+      } else {
+        console.error("Failed to upload file: " + xhr.status);
+      }
+    }
+  };
+  xhr.send(formData);
+
+  setTimeout(function() {
+                location.href = '/home';
+              }, 2000);
+});
+
+const burgerMenu = document.getElementById('burger-menu');
+const popUpWindow = document.getElementById('pop-up-window');
+
+burgerMenu.addEventListener('click', function(event) {
+  const burgerMenuRect = burgerMenu.getBoundingClientRect();
+  popUpWindow.style.top = burgerMenuRect.bottom + 'px';
+  popUpWindow.style.right = window.innerWidth - burgerMenuRect.right + 'px';
+  popUpWindow.style.display = 'block';
+
+  event.stopPropagation(); // prevent the click event from propagating to document
+});
+
+popUpWindow.addEventListener('click', function(event) {
+  event.stopPropagation(); // prevent the click event from propagating to document
+});
+
+document.addEventListener('click', function() {
+  popUpWindow.style.display = 'none';
+});
+
+    </script>
+  </body>
+</html>

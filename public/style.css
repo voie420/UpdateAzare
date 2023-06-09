@@ -1,0 +1,417 @@
+:root {
+    color-scheme: dark;
+}
+
+body {
+    margin: 0px;
+}
+
+html, body, #wrapper, div#main {
+    height: 100%;
+    background-color: #000000;
+    background-size: 100%;
+    background-repeat:no-repeat;
+    margin:0px;
+}
+
+.container {
+  width:100%;
+  height:100%;
+  background-color: #414462;
+  display: flex;
+  flex-direction: row;
+}
+
+.header {
+  height:60px;
+  width:100%;
+  background-color: #2f2f2f;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main {
+  height:100%;
+  width:100%;
+  background-color: #252525;
+}
+
+.loginButton {
+  padding: 8px 12px;
+  border-width: 0px;
+  font-size: medium;
+  margin-left: 5px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.loginButton:hover {
+  color: #0056a1;
+  cursor: pointer;
+}
+
+.signupButton {
+  padding: 12px 18px;
+  border-width: 0px;
+  border-radius: 5px;
+  font-size: medium;
+  background-color: #0077df;
+  color:#ffffff;
+}
+
+.signupButton:hover {
+  background-color: #0056a1;
+  cursor: pointer;
+}
+
+.loginInput {
+  width: 90%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.ConfirmButton {
+  font-family: 'Roboto', sans-serif;
+  background-color: #0077df;
+  border-width: 0cm;
+  border-radius: 5px;
+  padding: 12px 18px;
+}
+
+.CreateButton {
+  font-family: 'Roboto', sans-serif;
+  background-color: #4e4e4e;
+  border-width: 0cm;
+  border-radius: 5px;
+  padding: 12px 18px;
+}
+
+.popupwrapper {
+  height:100%;
+  width:100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.popup-container {
+  width:400px;
+  height:500px;
+  background-color: #2f2f2f;
+  border-radius: 10px;
+}
+
+.HoverPointer {
+  cursor: pointer;
+}
+
+.SignInButton {
+  background-color: #0077df;
+  border-radius: 5px;
+  border-width: 0px;
+  font-family: 'Roboto', sans-serif;
+  width:70%; 
+  height:3vh;
+  letter-spacing:2.5px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.SignInButton:hover {
+  background-color: #0056a1;
+  cursor: pointer;
+}
+
+.InputBox {
+  width:70%;
+  height:3vh;
+  border-radius:
+  5px;
+  border-width: 0px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.InputBox:hover {
+  box-shadow: 0px 8px 15px rgba(20, 20, 20, 0.1);
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.fadeBgHover {
+  background-color: rgba(29, 29, 29, 0);
+  transition: opacity 0.6s ease-in-out, background-color 0.6s ease-in-out;
+}
+
+.fadeBgHover:hover {
+  cursor: pointer;
+  background-color: rgba(88, 88, 88, 0.5);
+  transition: opacity 0.6s ease-in-out, background-color 0.6s ease-in-out;
+}
+
+.FollowButton {
+  border-radius: 5px;
+  border-width: 0px;
+  height:3vh;
+  width:6vh;
+  background-color: #0077df;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+}
+
+.FollowingButton {
+  border-radius: 5px;
+  border-width: 0px;
+  height:3vh;
+  width:7vh;
+  background-color: rgb(55, 55, 55);
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+}
+
+.UnFollowingButton {
+  border-radius: 5px;
+  border-width: 0px;
+  height:3vh;
+  width:7vh;
+  background-color: rgb(55, 55, 55);
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+}
+
+.EditButton {
+  border-radius: 5px;
+  border-width: 0px;
+  height:3vh;
+  width:7.5vh;
+  background-color: rgb(55, 55, 55);
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+}
+
+.EditButton:hover {
+  background-color: rgb(75, 75, 75);
+  transition: opacity 0.3s ease-in-out, background-color 0.6s ease-in-out;
+}
+
+.FollowingButton:hover {
+  background-color: rgb(75, 75, 75);
+  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.UnFollowingButton:hover {
+  background-color: rgb(192, 0, 0);
+  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.SelectImage:hover {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.SelectImage:hover {
+  opacity: 0.3;
+  cursor:pointer;
+  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.SaveButton {
+  cursor:pointer;
+  background-color: #0056a1;
+  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.FollowButton:hover {
+  background-color: #0056a1;
+  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.SaveButton:hover {
+  cursor:pointer;
+  background-color: #0056a1;
+  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.NaviHoverFade {
+  cursor:pointer;
+  background-color: rgba(52, 52, 52, 0);
+  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.NaviHoverFade:hover {
+  background-color: rgba(52, 52, 52, 0.7);
+  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.SignInEmbedded {
+  background-color: #272727;
+  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.SignInEmbedded:hover {
+  background-color: #161616;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+textarea {
+  resize: none;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  margin: 0 auto; /* Center the video container */
+}
+
+.video-container video {
+  position: absolute;
+  bottom: 0; /* Position the video at the bottom */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: black;
+  margin: 0 auto; /* Center the video within the container */
+}
+
+
+
+
+.controls-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+
+
+.play-pause-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.timeline-container {
+  height: 5px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.timeline-progress {
+  position: absolute;
+  height: 100%;
+  width: 0%;
+  background-color: white;
+}
+
+
+.buttons-container {
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height:100%;
+}
+
+.custom-button {
+  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  background-color: #303030;
+  border: 1px solid transparent;
+}
+
+.custom-button2 {
+  border-radius: 100%;
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+  background-color: #303030;
+  border: 1px solid transparent;
+}
+
+#pop-up-window {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+#pop-up-window label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#uploadForm {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#uploadForm input[type="file"] {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#uploadForm input[type="submit"] {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
